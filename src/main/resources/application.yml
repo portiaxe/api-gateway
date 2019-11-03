@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 8762
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    heartbeat-executor-exponential-back-off-bound: 60000
+    eureka-server-read-timeout-seconds: 60000
+    eureka-server-connect-timeout-seconds: 60000
+    eureka-connection-idle-timeout-seconds: 6000
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  
+ribbon:
+  ReadTimeout: 40000
+  ConnectTimeout: 40000    
+
